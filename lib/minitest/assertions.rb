@@ -173,16 +173,16 @@ module Minitest
       msg = message(msg, E) { diff exp, act }
       result = assert exp == act, msg
 
-      if exp.nil? then
-        if Minitest::VERSION =~ /^6/ then
-          refute_nil exp, "Use assert_nil if expecting nil."
-        else
-          where = Minitest.filter_backtrace(caller).first
-          where = where.split(/:in /, 2).first # clean up noise
+#     if exp.nil? then
+#       if Minitest::VERSION =~ /^6/ then
+#         refute_nil exp, "Use assert_nil if expecting nil."
+#       else
+#         where = Minitest.filter_backtrace(caller).first
+#         where = where.split(/:in /, 2).first # clean up noise
 
-          warn "DEPRECATED: Use assert_nil if expecting nil from #{where}. This will fail in Minitest 6."
-        end
-      end
+#         warn "DEPRECATED: Use assert_nil if expecting nil from #{where}. This will fail in Minitest 6."
+#       end
+#     end
 
       result
     end
